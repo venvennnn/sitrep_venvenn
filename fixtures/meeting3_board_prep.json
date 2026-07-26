@@ -1,0 +1,48 @@
+{
+  "task": {
+    "id": "m3-board-prep",
+    "title": "DriftGuard review — Board deck prep",
+    "description": "workspace: demo-acme"
+  },
+  "summary": "Board deck prep, April 2. Leadership wants one activation number for the board. Growth still cites signup-plus-email-verification; Product wants completed onboarding. Nobody wrote down which definition the March '55%' used. Also weekly actives / AU / actives were used interchangeably — all referring to users with at least one session in the last 7 days, currently 18.2k.",
+  "attendees": [
+    {"id": "u1", "name": "Priya"},
+    {"id": "u3", "name": "Alex"},
+    {"id": "u6", "name": "Morgan"}
+  ],
+  "agent": {
+    "instructions": "workspace: demo-acme",
+    "tools": [],
+    "model": "offline"
+  },
+  "extraction": {
+    "meeting_title": "Board deck prep — April 2",
+    "meeting_date": "2026-04-02",
+    "metrics": [
+      {
+        "name": "Activation",
+        "aliases": [],
+        "definition": "A new user who signs up and verifies their email within 24 hours",
+        "value": null,
+        "previous_value": null,
+        "unit": null,
+        "owner": "Priya",
+        "team": "Growth",
+        "speaker": "Priya",
+        "confidence": 0.88
+      },
+      {
+        "name": "Weekly Active Users",
+        "aliases": ["weekly actives", "AU", "actives"],
+        "definition": "Users with at least one session in the last 7 days",
+        "value": "18.2k",
+        "previous_value": null,
+        "unit": "users",
+        "owner": "Morgan",
+        "team": "Data",
+        "speaker": "Morgan",
+        "confidence": 0.93
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "name": "DriftGuard AI",
+  "tagline": "Catches when teams silently redefine the KPIs they all report on.",
+  "description": "DriftGuard gives your organization a memory for what its numbers mean. After every meeting it extracts metrics and working definitions, compares them to a living glossary built from prior meetings, and flags definition drift, confounded value changes (when a metric 'improves' only because the definition moved), and cross-team conflicts. Returns a plain-language alert report plus an updated metric glossary — the single source of truth for what Activation, ARR, and every other number actually mean.",
+  "icon": "🛡️",
+  "color": "teal",
+  "category": "analytics",
+  "taskTypes": ["summary", "doc", "analysis"],
+  "requiredIntegrations": [],
+  "pricing": { "model": "free", "label": "Free" }
+}

@@ -1,0 +1,36 @@
+{
+  "task": {
+    "id": "m1-growth-standup",
+    "title": "DriftGuard review — Growth standup",
+    "description": "workspace: demo-acme"
+  },
+  "summary": "Growth standup, March 4. Priya (Growth) reported activation at 45%. She defined activation as a new user who signs up and verifies their email within 24 hours. Marketing is aligned with that definition for campaign reporting. No other KPI definitions changed. Team will revisit activation next month after the onboarding redesign ships.",
+  "attendees": [
+    {"id": "u1", "name": "Priya"},
+    {"id": "u2", "name": "Jordan"},
+    {"id": "u3", "name": "Alex"}
+  ],
+  "agent": {
+    "instructions": "workspace: demo-acme",
+    "tools": [],
+    "model": "offline"
+  },
+  "extraction": {
+    "meeting_title": "Growth standup — March 4",
+    "meeting_date": "2026-03-04",
+    "metrics": [
+      {
+        "name": "Activation",
+        "aliases": ["activated users"],
+        "definition": "A new user who signs up and verifies their email within 24 hours",
+        "value": "45%",
+        "previous_value": null,
+        "unit": "%",
+        "owner": "Priya",
+        "team": "Growth",
+        "speaker": "Priya",
+        "confidence": 0.95
+      }
+    ]
+  }
+}

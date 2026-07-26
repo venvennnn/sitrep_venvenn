@@ -63,6 +63,10 @@ class LLM:
         headers = {"Content-Type": "application/json"}
         if LLM_API_KEY:
             headers["Authorization"] = f"Bearer {LLM_API_KEY}"
+        # OpenRouter asks for these; harmless for other providers.
+        if "openrouter.ai" in LLM_BASE_URL:
+            headers.setdefault("HTTP-Referer", "https://joinsitrep.com")
+            headers.setdefault("X-Title", "DriftGuard AI")
         async with httpx.AsyncClient(timeout=90.0) as client:
             resp = await client.post(
                 url,
@@ -76,7 +80,16 @@ class LLM:
                     ],
                 },
             )
-            resp.raise_for_status()
+            if resp.is_error:
+                detail = (resp.text or "").strip()
+                if len(detail) > 500:
+                    detail = detail[:500] + "…"
+                raise RuntimeError(
+                    f"LLM HTTP {resp.status_code} for model={self.model!r} at {url}. "
+                    f"Body: {detail or '(empty)'}. "
+                    f"If using OpenRouter, set MODEL to a currently listed free model "
+                    f"(e.g. openrouter/free) — old :free slugs often 404."
+                )
             return resp.json()["choices"][0]["message"]["content"]
 
 

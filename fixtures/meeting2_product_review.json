@@ -1,0 +1,61 @@
+{
+  "task": {
+    "id": "m2-product-review",
+    "title": "DriftGuard review — Product weekly",
+    "description": "workspace: demo-acme"
+  },
+  "summary": "Product weekly, March 25. Alex (Product) shared that activation is now 55% — up from 45% last month. Product defines activation as a user who completes onboarding (profile + first project created). Alex said the onboarding redesign is working. Finance also mentioned ARR: Sales is reporting RM13.1M including committed contracts still in trial, while Finance reports RM12.4M excluding trials. Both called it ARR.",
+  "attendees": [
+    {"id": "u1", "name": "Priya"},
+    {"id": "u3", "name": "Alex"},
+    {"id": "u4", "name": "Sam"},
+    {"id": "u5", "name": "Riley"}
+  ],
+  "agent": {
+    "instructions": "workspace: demo-acme",
+    "tools": [],
+    "model": "offline"
+  },
+  "extraction": {
+    "meeting_title": "Product weekly — March 25",
+    "meeting_date": "2026-03-25",
+    "metrics": [
+      {
+        "name": "Activation",
+        "aliases": ["activated users"],
+        "definition": "A user who completes onboarding (profile + first project created)",
+        "value": "55%",
+        "previous_value": "45%",
+        "unit": "%",
+        "owner": "Alex",
+        "team": "Product",
+        "speaker": "Alex",
+        "confidence": 0.96
+      },
+      {
+        "name": "ARR",
+        "aliases": ["annual recurring revenue"],
+        "definition": "Committed contract value including trials that have signed",
+        "value": "RM13.1M",
+        "previous_value": null,
+        "unit": "RM",
+        "owner": "Riley",
+        "team": "Sales",
+        "speaker": "Riley",
+        "confidence": 0.9
+      },
+      {
+        "name": "ARR",
+        "aliases": ["annual recurring revenue"],
+        "definition": "Recognized recurring revenue excluding trials",
+        "value": "RM12.4M",
+        "previous_value": null,
+        "unit": "RM",
+        "owner": "Sam",
+        "team": "Finance",
+        "speaker": "Sam",
+        "confidence": 0.92
+      }
+    ]
+  }
+}

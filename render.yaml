@@ -17,6 +17,8 @@ services:
       - key: LLM_API_KEY
         sync: false
       - key: MODEL
-        value: meta-llama/llama-3.1-8b-instruct:free
+        # Free-model slugs on OpenRouter change often. Prefer openrouter/free
+        # (auto-routes) or check https://openrouter.ai/models?q=free
+        value: openrouter/free
       - key: DRIFTGUARD_WORKSPACE
         value: default

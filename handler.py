@@ -43,11 +43,37 @@ async def handler(input: AgentInput, ctx: Ctx) -> dict:
         }
 
     ctx.log(f"DriftGuard starting model={ctx.llm.model}")
-    result = await run_driftguard(
-        summary=summary,
-        attendees=input.attendees or [],
-        task=input.task or {},
-        ctx=ctx,
-    )
+    try:
+        result = await run_driftguard(
+            summary=summary,
+            attendees=input.attendees or [],
+            task=input.task or {},
+            ctx=ctx,
+        )
+    except Exception as exc:  # noqa: BLE001 — return a Studio-readable artifact
+        ctx.log(f"error={exc}")
+        return {
+            "artifacts": [
+                {
+                    "type": "markdown",
+                    "title": "DriftGuard — LLM configuration error",
+                    "content": (
+                        "# DriftGuard could not reach the LLM\n\n"
+                        f"**Model:** `{ctx.llm.model}`\n\n"
+                        f"**Error:** `{exc}`\n\n"
+                        "## Fix on Render (Environment)\n\n"
+                        "1. Confirm `LLM_BASE_URL=https://openrouter.ai/api/v1`\n"
+                        "2. Confirm `LLM_API_KEY` is a valid OpenRouter key\n"
+                        "3. Set `MODEL` to a **currently listed** free model, e.g.\n"
+                        "   - `openrouter/free` (recommended auto-router)\n"
+                        "   - `openai/gpt-oss-20b:free`\n"
+                        "   - `nvidia/nemotron-nano-9b-v2:free`\n"
+                        "4. Browse https://openrouter.ai/models?q=free — old slugs "
+                        "like `meta-llama/llama-3.1-8b-instruct:free` often return **404**\n"
+                        "5. Save env vars → **Manual Deploy** / restart, then Test again\n"
+                    ),
+                }
+            ]
+        }
     # SitRep only needs artifacts; meta is useful for local demos/tests.
     return {"artifacts": result["artifacts"]}

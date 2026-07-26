@@ -105,6 +105,7 @@ python scripts/demo_driftguard.py
 ## Deploy notes
 
 - Set `SITREP_AGENT_SECRET`, `LLM_BASE_URL`, `LLM_API_KEY`, `MODEL` on the host
+- OpenRouter: use `MODEL=openrouter/free` (or another slug from https://openrouter.ai/models?q=free). Old starter-kit free slugs often 404.
 - Prefer a **persistent disk** for `DRIFTGUARD_DB_PATH` so glossary memory survives restarts (Render free disk is ephemeral unless you attach storage)
 - Health check: `GET /health` → `{"ok": true}`
 

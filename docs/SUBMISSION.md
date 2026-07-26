@@ -23,9 +23,21 @@ Tunnels die when your laptop sleeps — deploy somewhere always-on:
 3. Set env vars:
    - `SITREP_AGENT_SECRET` (from SitRep Studio after you create the remote agent)
    - `LLM_API_KEY` (OpenRouter / OpenAI)
-   - Optionally override `MODEL`, `LLM_BASE_URL`
+   - `LLM_BASE_URL=https://openrouter.ai/api/v1`
+   - `MODEL=openrouter/free`  
+     *(OpenRouter free-model slugs change often. `meta-llama/llama-3.1-8b-instruct:free` is gone and returns **404**. Check https://openrouter.ai/models?q=free)*
    - `DRIFTGUARD_DB_PATH=/var/data/glossary.db` if you attach a disk
 4. Note the public URL, e.g. `https://driftguard-xxxx.onrender.com`
+
+### If Studio Test crashes with OpenRouter 404
+
+On Render → Environment, set:
+
+```
+MODEL=openrouter/free
+```
+
+(or `openai/gpt-oss-20b:free`), save, redeploy, retry Test.
 
 ### Option B — Railway / Fly / any Docker host
 
